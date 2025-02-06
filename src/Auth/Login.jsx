@@ -5,9 +5,7 @@ import { TextField, Card, CardContent, Typography, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../Redux Toolkit/Slice/AuthSlice';
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
-// Styled components using Material-UI's styled API
 const Root = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
@@ -21,7 +19,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   borderRadius: '10px',
   padding: '30px',
   width: '400px',
-  backdropFilter: 'blur(10px)', // Add blur effect to make it look like frosted glass
+  backdropFilter: 'blur(10px)',
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -71,10 +69,7 @@ const Login = () => {
         </CardContent>
       </StyledCard>
     </Root>
-    
-      // <SignedIn>
-      //   <UserButton />
-      // </SignedIn>
+
   );
 };
 

@@ -133,7 +133,17 @@ function Header() {
             ))}
           </Box>
           <IconButton onClick={toggle}>{mode === 'light' ? <DarkModeIcon/> : <LightModeIcon/>}</IconButton>
-          <Logout/>
+          {/* <Logout/> */}
+          <Box sx={{ ml: 2, display: 'flex', alignItems: 'center' }}>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <Button color="inherit">Sign In</Button>
+                </SignInButton>
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </Box>
         </Toolbar>
       </Container>
     </AppBar>
@@ -142,3 +152,18 @@ function Header() {
   );
 }
 export default Header;
+
+// import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+
+// export default function Header() {
+//   return (
+//     <header>
+//       <SignedOut>
+//         <SignInButton />
+//       </SignedOut>
+//       <SignedIn>
+//         <UserButton />
+//       </SignedIn>
+//     </header>
+//   );
+// }

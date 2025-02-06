@@ -6,6 +6,7 @@ import Cart from './components/Cart'
 import Login from './Auth/Login'
 import { PrivateRouter } from './Utils/PrivateRouter'
 import { Theme } from './Theme/Theme'
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
 function App() {
 
@@ -15,15 +16,33 @@ function App() {
       element: <Header/>,
       children:[
         {
-          index: true, 
-          element: <Navigate to="/login" />, 
+          index: true,
+          element: (
+            <SignedIn>
+              <Navigate to="/list" />
+            </SignedIn>
+          ),
         },
+        // {
+        //   index: true, 
+        //   element: <Navigate to="/login" />, 
+        // },
         {
           path:"/login",
-          element:<Login/>
+          // element:<Login/>
+          element: (
+            <SignedOut>
+              <Login />
+            </SignedOut>
+          ),
         },
         {
-          element:<PrivateRouter/>,
+          element: (
+            <SignedIn>
+              <PrivateRouter />
+            </SignedIn>
+          ),
+          // element:<PrivateRouter/>,
           children:[
             {
               path:"/list",
