@@ -143,7 +143,7 @@ function Header() {
               <SignedIn>
                 <UserButton />
               </SignedIn>
-            </Box>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

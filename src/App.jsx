@@ -1,12 +1,19 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import './App.css'
 import Header from './layouts/Header'
-import List from './components/List'
-import Cart from './components/Cart'
-import Login from './Auth/Login'
+// import List from './components/List'
+// import Cart from './components/Cart'
+// import Login from './Auth/Login'
 import { PrivateRouter } from './Utils/PrivateRouter'
 import { Theme } from './Theme/Theme'
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignIn, SignInButton } from "@clerk/clerk-react";
+import { lazy } from 'react'
+import { Suspense } from 'react'
+import Loader from './UI/Loader'
+
+const List = lazy(() => import('./components/List'));
+const Cart = lazy(() => import('./components/Cart'));
+const Login = lazy(() => import('./Auth/Login'));
 
 function App() {
 
@@ -17,22 +24,20 @@ function App() {
       children:[
         {
           index: true,
-          element: (
+          element: ( 
             <SignedIn>
-              <Navigate to="/list" />
+              <Navigate to="/list"/>
             </SignedIn>
           ),
         },
-        // {
-        //   index: true, 
-        //   element: <Navigate to="/login" />, 
-        // },
         {
           path:"/login",
           // element:<Login/>
           element: (
             <SignedOut>
-              <Login />
+              <Suspense fallback={<div><Loader/></div>}>
+                <SignIn />
+              </Suspense>
             </SignedOut>
           ),
         },
@@ -42,15 +47,22 @@ function App() {
               <PrivateRouter />
             </SignedIn>
           ),
-          // element:<PrivateRouter/>,
           children:[
             {
               path:"/list",
-              element: <List/>
+              element: (
+                <Suspense fallback={<div><Loader/></div>}>
+                <List />
+              </Suspense>
+              )
             },
             {
               path:"/cart",
-              element: <Cart/>
+              element: (
+                <Suspense fallback={<div><Loader/></div>}>
+                <Cart />
+              </Suspense>
+              )
             }
           ]
         }

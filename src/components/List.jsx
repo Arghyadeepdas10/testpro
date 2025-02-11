@@ -4,6 +4,7 @@ import CardList from './CardList';
 import SortIcon from '@mui/icons-material/Sort';
 import { IconButton, Input, MenuItem, Pagination, Select } from '@mui/material';
 import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
+import Loader from '../UI/Loader';
 
 const List = () => {
 
@@ -36,11 +37,11 @@ const List = () => {
   }
     
   if(isLoading){
-    return <h1>Loading...</h1>
+    return <h1><Loader/></h1>
   }
 
   if(isFetching){
-    return <h1>Fetching...</h1>
+    return <h1><Loader/></h1>
   }
 
   const handlepagechange = (_,value)=>{
