@@ -70,11 +70,10 @@ const List = () => {
           <IconButton onClick={handlesortname}><SortByAlphaIcon/></IconButton>
           <Select onChange={(e)=>setSelectcategory(e.target.value)} value={selectcategory} displayEmpty>
           <MenuItem value="">All Categories</MenuItem >
-              <MenuItem value="Electronics">Electronics</MenuItem>
-              <MenuItem value="Computer">Computer</MenuItem>
-              <MenuItem value="Smart watch">Smart watch</MenuItem>
-              <MenuItem value="Smart Phones">Smart Phones</MenuItem>
-              <MenuItem value="Home Decoration">Home Decoration</MenuItem>
+              <MenuItem value="men's clothing">Men's clothing</MenuItem>
+              <MenuItem value="jewelery">Jewelery</MenuItem>
+              <MenuItem value="electronics">Electronics</MenuItem>
+              <MenuItem value="women's clothing">Women's clothing</MenuItem>
           </Select>
       </div>
       {renderlist}
