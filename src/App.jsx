@@ -38,7 +38,7 @@ function App() {
               <Suspense fallback={<div><Loader/></div>}>
                 <SignIn />
               </Suspense>
-            </SignedOut>
+            </SignedOut>           
           ),
         },
         {
